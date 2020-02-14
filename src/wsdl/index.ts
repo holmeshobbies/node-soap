@@ -590,7 +590,7 @@ export class WSDL {
         const value = params[key];
         const prefixedKey = (isParts ? '' : nsPrefix) + key;
         const attributes = [];
-        if (typeof value === 'object' && value.hasOwnProperty(this.options.attributesKey)) {
+        if (value !== null && typeof value === 'object' && value.hasOwnProperty(this.options.attributesKey)) {
           const attrs = value[this.options.attributesKey];
           for (const n in attrs) {
             attributes.push(' ' + n + '=' + '"' + attrs[n] + '"');
@@ -728,7 +728,7 @@ export class WSDL {
           }
         }
       }
-    } else if (typeof obj === 'object') {
+    } else if (obj !== null && typeof obj === 'object') {
       for (name in obj) {
         if (!obj.hasOwnProperty(name)) { continue; }
         // don't process attributes as element
